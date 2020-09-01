@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	  <meta name="viewport" 
+			content="width=device-width, 
+			initial-scale=1.0, 
+			user-scalable=no" />
+	  <title>New World Survey Translator</title>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	  <style>
+	  
+		#NewWorldSurvey {
+			width: 749px;
+			height: 749px;
+			background-image: url("NWS.png");	  	  
+			background-color: #333;
+			display: flex;
+			float: left;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			touch-action: none;
+		}
+		
+		#XMark {
+			width: 51px;
+			height: 42px;
+			background-image: url("X.png");      
+			touch-action: none;
+			user-select: none;
+		}
+		
+		#XMark:hover {
+			cursor: pointer;
+		}
+		
+		#SalemMap {
+			--x: 0px;
+			--y: 0px;
+			width: 749px;
+			height: 749px;
+			background-image: url("SalemSmall.jpg");	
+			background-repeat: no-repeat;	
+			background-position: var(--x) var(--y);
+			display: flex;
+		}	
+	  </style>
+	</head>
+
+	<body>
+	<div><h1><center>Salem New World Survey Translator</center></h1></div>
+	  <div id="wrapper">
+			<div id="NewWorldSurvey">
+				<div id="XMark"></div>
+			</div>
+		  
+			<div id="SalemMap">
+				<img src="BigNWSX.png" style="opacity:0.4;filter:alpha(opacity=40);">
+			</div>
+	  </div>
+	  <div id="Directions">
+	  <p><b>How to Find an Approximate Location:</b><br>
+	  Make a New World Survey in game. <img src="survey.png"><br>
+	  Open your New World Survey.<br>
+	  Drag the X to the approximate place indicated on your New World Suvery.
+	  Once you are finished dragging the map on the right will move to that location.<br>
+	  The public Salem World Map can be downloaded <a href="http://forum.salemthegame.com/viewtopic.php?f=11&t=20921">Here</a>.
+	  </p>
+	  </div>
+	  
+
+	  <script>
+		var dragItem = document.querySelector("#XMark");
+		var container = document.querySelector("#NewWorldSurvey");		
+		var el = document.querySelector("#SalemMap"); 		
+
+		var active = false;
+		var currentX;
+		var currentY;
+		var initialX;
+		var initialY;
+		var xOffset = 0;
+		var yOffset = 0;
+
+		container.addEventListener("touchstart", dragStart, false);
+		container.addEventListener("touchend", dragEnd, false);
+		container.addEventListener("touchmove", drag, false);
+
+		container.addEventListener("mousedown", dragStart, false);
+		container.addEventListener("mouseup", dragEnd, false);
+		container.addEventListener("mousemove", drag, false);
+
+		function dragStart(e) {
+		  if (e.type === "touchstart") {
+			initialX = e.touches[0].clientX - xOffset;
+			initialY = e.touches[0].clientY - yOffset;
+		  } else {
+			initialX = e.clientX - xOffset;
+			initialY = e.clientY - yOffset;
+		  }
+
+		  if (e.target === dragItem) {
+			active = true;
+		  }
+		}
+
+		function dragEnd(e) {
+		  initialX = currentX;
+		  initialY = currentY;		 
+		
+		  NewX = -(initialX*10) - (3450) <!--- low is east --!>
+		  NewY = -(initialY*10) - (3400 + (10*(initialY/initialX))) <!--- low is higher --!>		
+		 
+		  el.style.setProperty('--x', NewX + "px");
+		  el.style.setProperty('--y', NewY + "px")
+
+		  active = false;   
+		}		
+
+		function drag(e) {
+		  if (active) {
+		  
+			e.preventDefault();
+		  
+			if (e.type === "touchmove") {
+			  currentX = e.touches[0].clientX - initialX;
+			  currentY = e.touches[0].clientY - initialY;
+			} else {
+			  currentX = e.clientX - initialX;
+			  currentY = e.clientY - initialY;
+			}
+
+			xOffset = currentX;
+			yOffset = currentY;
+
+			setTranslate(currentX, currentY, dragItem);
+		  }
+		}
+
+		function setTranslate(xPos, yPos, el) {
+		  el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+		}
+	
+	  </script>
+	</body>
+
+</html>
