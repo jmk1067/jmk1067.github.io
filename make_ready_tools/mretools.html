@@ -1,0 +1,1689 @@
+<html>
+<head>
+    <title>Separating Content and Design</title>
+    <link rel="stylesheet" href="style.css" /> 
+</head>
+
+<body>
+
+<!-- Font Awesome (icons) -->
+<script src="https://kit.fontawesome.com/62fbf1f852.js" crossorigin="anonymous"></script>
+
+
+<main class="page">
+    <div class="wrap">
+        <!-- Banner -->
+        <section class="banner">
+            <img class="bannerImg" src="https://picsum.photos/1440/320?random=12"/>
+            <div class="bannerOverlay"></div>
+            <div class="bannerContent">
+                <div class="bannerTitle">
+                    Make Ready Tools
+                </div>
+                <div class="bannerHint">
+                    Automating a few cacluations I have found useful
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid -->
+        <section class="grid">
+        
+            <!-- Left -->
+            <section class="card">
+                <div class="cardHead">
+                    <h2>POLE CLASS ESITMATOR</h2>
+                </div>
+    
+                <!-- Inputs -->
+                <div class="form">
+                    <div class="row two">
+                        <label class="field">
+                            <span class="label"> Pole Species </span>
+                            <select id="material" class="input" type="material">
+                                <option>ALASKA YELLOW CEDAR</option>
+                                <option>DOUGLAS FIR</option>
+                                <option>JACK PINE</option>
+                                <option>LODGEPOLE PINE</option>
+                                <option>NORTHERN WHITE CEDAR</option>
+                                <option>PONDEROSA PINE</option>
+                                <option>RADIATA PINE</option>
+                                <option>RED PINE</option>
+                                <option>SCANDINAVIAN PINE</option>
+                                <option>SCOTS PINE</option>
+                                <option>SOUTHERN PINE</option>
+                                <option>WESTERN LARCH</option>
+                                <option>WESTERN RED CEDAR</option>
+                            </select>
+                            <span class="hint" id="invoiceDatePretty">
+                                <a class=" hint_link" href="Newton-WoodPoleConference.png" target="_blank" rel="noopener noreferrer">
+                        <span> Not sure, check this map </span>
+                    </a>
+                        </label>
+            
+                        <label class="field">
+                            <span class="label"> Pole Height </span>
+                            <input id="height" type="text" placeholder="0" maxlength="3" />
+                            <span class="hint">
+                                Full pole height, 20 - 125, if usnure, see Pole Height Estimator
+                            </span>
+                        </label>
+                    </div>
+        
+                    <div class="row two">
+                        <label class="field">
+                            <span class="label">Measured Circumference</span>
+                            <input id="circum" type="text" placeholder="0" maxlength="4" />
+                        </label>
+                    </div>
+                </div>
+        
+                <div class="divider"></div>
+        
+                <!-- Results -->
+                <div class="row">
+                    <section class="result bg-secondcolor">
+                        <div class="resultflex">
+                            <p class="h1-text white-text"><span id="pclass"></span></p>
+                        </div>
+                        <button class="calulate-btn h1-text" id="findClass">Calulate</button>
+                    </section>
+                </div>
+                <br />
+                
+                <!-- Tips -->
+                <div class="note">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <div class="noteText">
+                        Estimates pole classes based on the ANSI O5.1-2022 minimum
+                        circumference at 6 ft from pole butt.
+                    </div>
+                </div>
+            </section>
+    
+            <!-- Right -->
+            <section class="card results">
+                <div class="cardHead">
+                    <h2>POLE HEIGHT ESITMATOR</h2>
+                </div>
+        
+                <!-- Inputs -->
+                <div class="form">
+                    <div class="row two">
+                        <label class="field">
+                            <span class="label">
+                                Measured Feet
+                            </span>
+                            <input id="pole_feet" type="text" placeholder="0" maxlength="3" />
+                            <span class="hint"></span>
+                        </label>
+          
+                        <label class="field">
+                            <span class="label">
+                                Measured Inches
+                            </span>
+                              <input id="pole_inches" type="text" placeholder="0" maxlength="2" />
+                              <span class="hint">1 - 11 inches</span>
+                        </label>
+                    </div> 
+                </div>
+        
+                <div class="divider"></div>
+                  
+                <!-- Results -->  
+                <div class="row">
+                    <section class="result bg-secondcolor">
+                        <div class="resultflex">
+                            <p class="h1-text white-text">Pole Height: <span id="pheight"></span></p>
+                        </div>
+                        <div class="resultflex">
+                            <p class="h1-text white-text">Buried Depth: <span id="bdepth"></span></p>
+                        </div>
+                        <button class="calulate-btn h1-text" id="findHeight">Calulate</button>
+                    </section>
+                </div>
+                <br />
+        
+                <!-- Tips -->  
+                <div class="note">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <div class="noteText">
+                        Estimates total pole height using measured pole height and  probable amount buried based on the standard rule of 10 percent of pole length plus 2 feet.
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Left -->
+            <section class="card" aria-label="Calculator inputs">
+                <div class="cardHead">
+                    <h2>DISTANCE MOVED CALCULATOR</h2>
+                </div>
+                
+                <!-- Inputs -->
+                <div class="form">
+                    <div class="row two">
+                        <label class="field">
+                            <span class="label">Original Height - Feet</span>
+                                <input id="dfeetA" type="text" placeholder="0" maxlength="3" />
+                            <span class="hint"></span>
+                        </label>
+              
+                        <label class="field">
+                            <span class="label"> Inches</span>
+                                <input id="dinchesA" type="text" placeholder="0" maxlength="2" />
+                            <span class="hint"></span>
+                        </label>
+                    </div>
+              
+                    <div class="row two">
+                        <label class="field">
+                            <span class="label">New Height - Feet</span>
+                                <input id="dfeetB" type="text" placeholder="0" maxlength="3" />
+                            <span class="hint"></span>
+                        </label>
+              
+                        <label class="field">
+                            <span class="label"> Inches</span>
+                                <input id="dinchesB" type="text" placeholder="0" maxlength="2" />
+                            <span class="hint"></span>
+                        </label>
+                    </div>
+            
+                    <div class="divider"></div>
+            
+                    <!-- Results -->
+                    <div class="row">
+                        <section class="result bg-secondcolor">
+                            <div class="resultflex">
+                                <p class="h1-text white-text">Feet Inches: <span id="distancefeet"></span></p>
+                            </div>
+                            <div class="resultflex">
+                                <p class="h1-text white-text">Inches: <span id="distanceinches"></span></p>
+                            </div>
+                            <div class="resultflex">
+                            <p class="h1-text white-text">Decimal Feet: <span id="distancedecimal"></span></p>
+                            </div>
+                            <button class="calulate-btn h1-text" id="findDistance">Calulate</button>
+                        </section>
+                    </div>
+                    <br />
+            
+                    <!-- Tips -->
+                    <div class="note">
+                        <i class="fa-solid fa-circle-info"></i>
+                            <div class="noteText">
+                                When it comes to moving attachments, each jurisidicational entity wants something slightly different, here a few common outputs I've seen.
+                            </div>
+                    </div>
+            </section>
+              
+        </section>
+          
+        <!-- Bottom info -->
+        <footer class="foot">
+            <div class="footCard">
+                <div class="footTitle">
+                </div>
+                <p class="footText">
+                    I did this project to save me time in the future and hone a few skills I'd like to develop. If you have another tool you would like to see, feel free to reach out.
+                </p>
+                <div class="footActions">
+                    <a class="calulate-btn h1-text" href="mailto:jkennedy@humboldt.edu" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Contact</span>
+                    </a>
+                    <a class="calulate-btn h1-text" href="https://www.linkedin.com/in/jeffrey-kennedy-844728196/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <span>Connect</span>
+                    </a>
+                </div>
+            </div>
+        </footer>
+        
+    </div>
+</main>
+
+<script>
+var ayc = [
+  { height: 20, circum: 41.5, pclass: 'H5' },
+  { height: 20, circum: 39.5, pclass: 'H4' },
+  { height: 20, circum: 37.5, pclass: 'H3' },
+  { height: 20, circum: 35.5, pclass: 'H2' },
+  { height: 20, circum: 33.5, pclass: 'H1' },
+  { height: 20, circum: 31.5, pclass: '1' },
+  { height: 20, circum: 29.5, pclass: '2' },
+  { height: 20, circum: 27.5, pclass: '3' },
+  { height: 20, circum: 25.5, pclass: '4' },
+  { height: 20, circum: 23.5, pclass: '5' },
+  { height: 20, circum: 22, pclass: '6' },
+  { height: 20, circum: 20, pclass: '7' },
+  { height: 20, circum: 17.5, pclass: '9' },
+  { height: 20, circum: 14, pclass: '10' },
+  { height: 25, circum: 47, pclass: 'H6' },
+  { height: 25, circum: 45, pclass: 'H5' },
+  { height: 25, circum: 43, pclass: 'H4' },
+  { height: 25, circum: 41, pclass: 'H3' },
+  { height: 25, circum: 39, pclass: 'H2' },
+  { height: 25, circum: 37, pclass: 'H1' },
+  { height: 25, circum: 34.5, pclass: '1' },
+  { height: 25, circum: 32.5, pclass: '2' },
+  { height: 25, circum: 30, pclass: '3' },
+  { height: 25, circum: 28, pclass: '4' },
+  { height: 25, circum: 26, pclass: '5' },
+  { height: 25, circum: 24, pclass: '6' },
+  { height: 25, circum: 22, pclass: '7' },
+  { height: 25, circum: 19.5, pclass: '9' },
+  { height: 25, circum: 15, pclass: '10' },
+  { height: 30, circum: 51, pclass: 'H6' },
+  { height: 30, circum: 49, pclass: 'H5' },
+  { height: 30, circum: 46.5, pclass: 'H4' },
+  { height: 30, circum: 44.5, pclass: 'H3' },
+  { height: 30, circum: 42, pclass: 'H2' },
+  { height: 30, circum: 40, pclass: 'H1' },
+  { height: 30, circum: 37.5, pclass: '1' },
+  { height: 30, circum: 35, pclass: '2' },
+  { height: 30, circum: 32.5, pclass: '3' },
+  { height: 30, circum: 30, pclass: '4' },
+  { height: 30, circum: 28, pclass: '5' },
+  { height: 30, circum: 26, pclass: '6' },
+  { height: 30, circum: 24, pclass: '7' },
+  { height: 30, circum: 20.5, pclass: '9' },
+  { height: 35, circum: 54.5, pclass: 'H6' },
+  { height: 35, circum: 52, pclass: 'H5' },
+  { height: 35, circum: 49.5, pclass: 'H4' },
+  { height: 35, circum: 47, pclass: 'H3' },
+  { height: 35, circum: 45, pclass: 'H2' },
+  { height: 35, circum: 42.5, pclass: 'H1' },
+  { height: 35, circum: 40, pclass: '1' },
+  { height: 35, circum: 37.5, pclass: '2' },
+  { height: 35, circum: 35, pclass: '3' },
+  { height: 35, circum: 32, pclass: '4' },
+  { height: 35, circum: 30, pclass: '5' },
+  { height: 35, circum: 27.5, pclass: '6' },
+  { height: 35, circum: 25.5, pclass: '7' },
+  { height: 40, circum: 57.5, pclass: 'H6' },
+  { height: 40, circum: 55, pclass: 'H5' },
+  { height: 40, circum: 52.5, pclass: 'H4' },
+  { height: 40, circum: 50, pclass: 'H3' },
+  { height: 40, circum: 47.5, pclass: 'H2' },
+  { height: 40, circum: 45, pclass: 'H1' },
+  { height: 40, circum: 42, pclass: '1' },
+  { height: 40, circum: 39.5, pclass: '2' },
+  { height: 40, circum: 37, pclass: '3' },
+  { height: 40, circum: 34, pclass: '4' },
+  { height: 40, circum: 31.5, pclass: '5' },
+  { height: 40, circum: 29, pclass: '6' },
+  { height: 40, circum: 25.5, pclass: '7' },
+  { height: 45, circum: 60, pclass: 'H6' },
+  { height: 45, circum: 57.5, pclass: 'H5' },
+  { height: 45, circum: 55, pclass: 'H4' },
+  { height: 45, circum: 52.5, pclass: 'H3' },
+  { height: 45, circum: 49.5, pclass: 'H2' },
+  { height: 45, circum: 47, pclass: 'H1' },
+  { height: 45, circum: 44, pclass: '1' },
+  { height: 45, circum: 41.5, pclass: '2' },
+  { height: 45, circum: 38.5, pclass: '3' },
+  { height: 45, circum: 36, pclass: '4' },
+  { height: 45, circum: 33, pclass: '5' },
+  { height: 45, circum: 30.5, pclass: '6' },
+  { height: 55, circum: 65, pclass: 'H6' },
+  { height: 55, circum: 62, pclass: 'H5' },
+  { height: 55, circum: 59.5, pclass: 'H4' },
+  { height: 55, circum: 56.5, pclass: 'H3' },
+  { height: 55, circum: 53.5, pclass: 'H2' },
+  { height: 55, circum: 50.5, pclass: 'H1' },
+  { height: 55, circum: 47.5, pclass: '1' },
+  { height: 55, circum: 44.5, pclass: '2' },
+  { height: 55, circum: 41.5, pclass: '3' },
+  { height: 55, circum: 39, pclass: '4' },
+  { height: 60, circum: 67, pclass: 'H6' },
+  { height: 60, circum: 64, pclass: 'H5' },
+  { height: 60, circum: 61.5, pclass: 'H4' },
+  { height: 60, circum: 58.5, pclass: 'H3' },
+  { height: 60, circum: 55.5, pclass: 'H2' },
+  { height: 60, circum: 52.5, pclass: 'H1' },
+  { height: 60, circum: 49.5, pclass: '1' },
+  { height: 60, circum: 46, pclass: '2' },
+  { height: 60, circum: 43, pclass: '3' },
+  { height: 60, circum: 40, pclass: '4' },
+  { height: 65, circum: 69, pclass: 'H6' },
+  { height: 65, circum: 66, pclass: 'H5' },
+  { height: 65, circum: 63, pclass: 'H4' },
+  { height: 65, circum: 60, pclass: 'H3' },
+  { height: 65, circum: 57, pclass: 'H2' },
+  { height: 65, circum: 54, pclass: 'H1' },
+  { height: 65, circum: 51, pclass: '1' },
+  { height: 65, circum: 47.5, pclass: '2' },
+  { height: 65, circum: 44.5, pclass: '3' },
+  { height: 65, circum: 41.5, pclass: '4' },
+  { height: 70, circum: 71, pclass: 'H6' },
+  { height: 70, circum: 68, pclass: 'H5' },
+  { height: 70, circum: 65, pclass: 'H4' },
+  { height: 70, circum: 62, pclass: 'H3' },
+  { height: 70, circum: 58.5, pclass: 'H2' },
+  { height: 70, circum: 55.5, pclass: 'H1' },
+  { height: 70, circum: 52.5, pclass: '1' },
+  { height: 70, circum: 49, pclass: '2' },
+  { height: 70, circum: 46, pclass: '3' },
+  { height: 70, circum: 42.5, pclass: '4' },
+  { height: 75, circum: 73, pclass: 'H6' },
+  { height: 75, circum: 69.5, pclass: 'H5' },
+  { height: 75, circum: 66.5, pclass: 'H4' },
+  { height: 75, circum: 63.5, pclass: 'H3' },
+  { height: 75, circum: 60, pclass: 'H2' },
+  { height: 75, circum: 57, pclass: 'H1' },
+  { height: 75, circum: 53.5, pclass: '1' },
+  { height: 75, circum: 50.5, pclass: '2' },
+  { height: 75, circum: 47, pclass: '3' },
+  { height: 80, circum: 74.5, pclass: 'H6' },
+  { height: 80, circum: 71.5, pclass: 'H5' },
+  { height: 80, circum: 68, pclass: 'H4' },
+  { height: 80, circum: 65, pclass: 'H3' },
+  { height: 80, circum: 61.5, pclass: 'H2' },
+  { height: 80, circum: 58.5, pclass: 'H1' },
+  { height: 80, circum: 55, pclass: '1' },
+  { height: 80, circum: 51.5, pclass: '2' },
+  { height: 80, circum: 48.5, pclass: '3' },
+  { height: 85, circum: 76, pclass: 'H6' },
+  { height: 85, circum: 73, pclass: 'H5' },
+  { height: 85, circum: 70, pclass: 'H4' },
+  { height: 85, circum: 66.5, pclass: 'H3' },
+  { height: 85, circum: 63, pclass: 'H2' },
+  { height: 85, circum: 59.5, pclass: 'H1' },
+  { height: 85, circum: 56, pclass: '1' },
+  { height: 85, circum: 53, pclass: '2' },
+  { height: 85, circum: 49.5, pclass: '3' },
+  { height: 90, circum: 78, pclass: 'H6' },
+  { height: 90, circum: 74.5, pclass: 'H5' },
+  { height: 90, circum: 71, pclass: 'H4' },
+  { height: 90, circum: 68, pclass: 'H3' },
+  { height: 90, circum: 64.5, pclass: 'H2' },
+  { height: 90, circum: 61, pclass: 'H1' },
+  { height: 90, circum: 57.5, pclass: '1' },
+  { height: 90, circum: 54, pclass: '2' },
+  { height: 90, circum: 50.5, pclass: '3' },
+  { height: 95, circum: 79.5, pclass: 'H6' },
+  { height: 95, circum: 76, pclass: 'H5' },
+  { height: 95, circum: 72.5, pclass: 'H4' },
+  { height: 95, circum: 69.5, pclass: 'H3' },
+  { height: 95, circum: 66, pclass: 'H2' },
+  { height: 95, circum: 62, pclass: 'H1' },
+  { height: 95, circum: 58.5, pclass: '1' },
+  { height: 95, circum: 55, pclass: '2' },
+  { height: 100, circum: 81, pclass: 'H6' },
+  { height: 100, circum: 77.5, pclass: 'H5' },
+  { height: 100, circum: 74, pclass: 'H4' },
+  { height: 100, circum: 70.5, pclass: 'H3' },
+  { height: 100, circum: 67, pclass: 'H2' },
+  { height: 100, circum: 63.5, pclass: 'H1' },
+  { height: 100, circum: 60, pclass: '1' },
+  { height: 100, circum: 56, pclass: '2' },
+  { height: 105, circum: 82.5, pclass: 'H6' },
+  { height: 105, circum: 79, pclass: 'H5' },
+  { height: 105, circum: 75.5, pclass: 'H4' },
+  { height: 105, circum: 72, pclass: 'H3' },
+  { height: 105, circum: 68.5, pclass: 'H2' },
+  { height: 105, circum: 64.5, pclass: 'H1' },
+  { height: 105, circum: 61, pclass: '1' },
+  { height: 105, circum: 57, pclass: '2' },
+  { height: 110, circum: 84, pclass: 'H6' },
+  { height: 110, circum: 80.5, pclass: 'H5' },
+  { height: 110, circum: 77, pclass: 'H4' },
+  { height: 110, circum: 73, pclass: 'H3' },
+  { height: 110, circum: 69.5, pclass: 'H2' },
+  { height: 110, circum: 65.5, pclass: 'H1' },
+  { height: 110, circum: 62, pclass: '1' },
+  { height: 110, circum: 58, pclass: '2' },
+  { height: 115, circum: 85.5, pclass: 'H6' },
+  { height: 115, circum: 81.5, pclass: 'H5' },
+  { height: 115, circum: 78, pclass: 'H4' },
+  { height: 115, circum: 74.5, pclass: 'H3' },
+  { height: 115, circum: 70.5, pclass: 'H2' },
+  { height: 115, circum: 67, pclass: 'H1' },
+  { height: 115, circum: 63, pclass: '1' },
+  { height: 115, circum: 59, pclass: '2' },
+  { height: 120, circum: 86.5, pclass: 'H6' },
+  { height: 120, circum: 83, pclass: 'H5' },
+  { height: 120, circum: 79.5, pclass: 'H4' },
+  { height: 120, circum: 75.5, pclass: 'H3' },
+  { height: 120, circum: 72, pclass: 'H2' },
+  { height: 120, circum: 68, pclass: 'H1' },
+  { height: 120, circum: 64, pclass: '1' },
+  { height: 120, circum: 60, pclass: '2' },
+  { height: 125, circum: 88, pclass: 'H6' },
+  { height: 125, circum: 84.5, pclass: 'H5' },
+  { height: 125, circum: 80.5, pclass: 'H4' },
+  { height: 125, circum: 76.5, pclass: 'H3' },
+  { height: 125, circum: 73, pclass: 'H2' },
+  { height: 125, circum: 69, pclass: 'H1' },
+  { height: 125, circum: 65, pclass: '1' },
+  { height: 125, circum: 61, pclass: '2' },
+];
+
+var jp = [
+  { height: 20, circum: 44.5, pclass: 'H6' },
+  { height: 20, circum: 43, pclass: 'H5' },
+  { height: 20, circum: 41, pclass: 'H4' },
+  { height: 20, circum: 39, pclass: 'H3' },
+  { height: 20, circum: 37, pclass: 'H2' },
+  { height: 20, circum: 35, pclass: 'H1' },
+  { height: 20, circum: 32.5, pclass: '1' },
+  { height: 20, circum: 30.5, pclass: '2' },
+  { height: 20, circum: 28.5, pclass: '3' },
+  { height: 20, circum: 26.5, pclass: '4' },
+  { height: 20, circum: 24.5, pclass: '5' },
+  { height: 20, circum: 22.5, pclass: '6' },
+  { height: 20, circum: 21, pclass: '7' },
+  { height: 20, circum: 18, pclass: '9' },
+  { height: 20, circum: 14.5, pclass: '10' },
+  { height: 25, circum: 49, pclass: 'H6' },
+  { height: 25, circum: 47, pclass: 'H5' },
+  { height: 25, circum: 44.5, pclass: 'H4' },
+  { height: 25, circum: 42.5, pclass: 'H3' },
+  { height: 25, circum: 40.5, pclass: 'H2' },
+  { height: 25, circum: 38, pclass: 'H1' },
+  { height: 25, circum: 36, pclass: '1' },
+  { height: 25, circum: 33.5, pclass: '2' },
+  { height: 25, circum: 31, pclass: '3' },
+  { height: 25, circum: 29, pclass: '4' },
+  { height: 25, circum: 27, pclass: '5' },
+  { height: 25, circum: 25, pclass: '6' },
+  { height: 25, circum: 23, pclass: '7' },
+  { height: 25, circum: 20, pclass: '9' },
+  { height: 25, circum: 15.5, pclass: '10' },
+  { height: 30, circum: 53, pclass: 'H6' },
+  { height: 30, circum: 50.5, pclass: 'H5' },
+  { height: 30, circum: 48.5, pclass: 'H4' },
+  { height: 30, circum: 46, pclass: 'H3' },
+  { height: 30, circum: 43.5, pclass: 'H2' },
+  { height: 30, circum: 41.5, pclass: 'H1' },
+  { height: 30, circum: 39, pclass: '1' },
+  { height: 30, circum: 36.5, pclass: '2' },
+  { height: 30, circum: 34, pclass: '3' },
+  { height: 30, circum: 31.5, pclass: '4' },
+  { height: 30, circum: 29, pclass: '5' },
+  { height: 30, circum: 27, pclass: '6' },
+  { height: 30, circum: 25, pclass: '7' },
+  { height: 30, circum: 21, pclass: '9' },
+  { height: 35, circum: 56.5, pclass: 'H6' },
+  { height: 35, circum: 54, pclass: 'H5' },
+  { height: 35, circum: 51.5, pclass: 'H4' },
+  { height: 35, circum: 49, pclass: 'H3' },
+  { height: 35, circum: 46.5, pclass: 'H2' },
+  { height: 35, circum: 44, pclass: 'H1' },
+  { height: 35, circum: 41.5, pclass: '1' },
+  { height: 35, circum: 38.5, pclass: '2' },
+  { height: 35, circum: 36, pclass: '3' },
+  { height: 35, circum: 33.5, pclass: '4' },
+  { height: 35, circum: 31, pclass: '5' },
+  { height: 35, circum: 28.5, pclass: '6' },
+  { height: 35, circum: 26.5, pclass: '7' },
+  { height: 40, circum: 59.5, pclass: 'H6' },
+  { height: 40, circum: 57, pclass: 'H5' },
+  { height: 40, circum: 54.5, pclass: 'H4' },
+  { height: 40, circum: 52, pclass: 'H3' },
+  { height: 40, circum: 49, pclass: 'H2' },
+  { height: 40, circum: 46.5, pclass: 'H1' },
+  { height: 40, circum: 44, pclass: '1' },
+  { height: 40, circum: 41, pclass: '2' },
+  { height: 40, circum: 38, pclass: '3' },
+  { height: 40, circum: 35.5, pclass: '4' },
+  { height: 40, circum: 33, pclass: '5' },
+  { height: 40, circum: 30.5, pclass: '6' },
+  { height: 45, circum: 62.5, pclass: 'H6' },
+  { height: 45, circum: 60, pclass: 'H5' },
+  { height: 45, circum: 57, pclass: 'H4' },
+  { height: 45, circum: 54.5, pclass: 'H3' },
+  { height: 45, circum: 51.5, pclass: 'H2' },
+  { height: 45, circum: 49, pclass: 'H1' },
+  { height: 45, circum: 46, pclass: '1' },
+  { height: 45, circum: 43, pclass: '2' },
+  { height: 45, circum: 40, pclass: '3' },
+  { height: 45, circum: 37, pclass: '4' },
+  { height: 45, circum: 34.5, pclass: '5' },
+  { height: 45, circum: 32, pclass: '6' },
+  { height: 55, circum: 67.5, pclass: 'H6' },
+  { height: 55, circum: 64.5, pclass: 'H5' },
+  { height: 55, circum: 61.5, pclass: 'H4' },
+  { height: 55, circum: 59, pclass: 'H3' },
+  { height: 55, circum: 56, pclass: 'H2' },
+  { height: 55, circum: 53, pclass: 'H1' },
+  { height: 55, circum: 49.5, pclass: '1' },
+  { height: 55, circum: 46.5, pclass: '2' },
+  { height: 55, circum: 43.5, pclass: '3' },
+  { height: 55, circum: 40.5, pclass: '4' },
+  { height: 60, circum: 70, pclass: 'H6' },
+  { height: 60, circum: 67, pclass: 'H5' },
+  { height: 60, circum: 64, pclass: 'H4' },
+  { height: 60, circum: 61, pclass: 'H3' },
+  { height: 60, circum: 57.5, pclass: 'H2' },
+  { height: 60, circum: 54.5, pclass: 'H1' },
+  { height: 60, circum: 51.5, pclass: '1' },
+  { height: 60, circum: 48, pclass: '2' },
+  { height: 60, circum: 45, pclass: '3' },
+  { height: 60, circum: 42, pclass: '4' },
+  { height: 65, circum: 72, pclass: 'H6' },
+  { height: 65, circum: 69, pclass: 'H5' },
+  { height: 65, circum: 66, pclass: 'H4' },
+  { height: 65, circum: 62.5, pclass: 'H3' },
+  { height: 65, circum: 59.5, pclass: 'H2' },
+  { height: 65, circum: 56.5, pclass: 'H1' },
+  { height: 65, circum: 53, pclass: '1' },
+  { height: 65, circum: 49.5, pclass: '2' },
+  { height: 65, circum: 46, pclass: '3' },
+  { height: 65, circum: 43, pclass: '4' },
+  { height: 70, circum: 74, pclass: 'H6' },
+  { height: 70, circum: 71, pclass: 'H5' },
+  { height: 70, circum: 67.5, pclass: 'H4' },
+  { height: 70, circum: 64.5, pclass: 'H3' },
+  { height: 70, circum: 61, pclass: 'H2' },
+  { height: 70, circum: 58, pclass: 'H1' },
+  { height: 70, circum: 54.5, pclass: '1' },
+  { height: 70, circum: 51, pclass: '2' },
+  { height: 70, circum: 47.5, pclass: '3' },
+  { height: 70, circum: 44.5, pclass: '4' },
+  { height: 75, circum: 76, pclass: 'H6' },
+  { height: 75, circum: 72.5, pclass: 'H5' },
+  { height: 75, circum: 69.5, pclass: 'H4' },
+  { height: 75, circum: 66, pclass: 'H3' },
+  { height: 75, circum: 63, pclass: 'H2' },
+  { height: 75, circum: 59.5, pclass: 'H1' },
+  { height: 75, circum: 56, pclass: '1' },
+  { height: 75, circum: 52.5, pclass: '2' },
+  { height: 75, circum: 49, pclass: '3' },
+  { height: 80, circum: 78, pclass: 'H6' },
+  { height: 80, circum: 74.5, pclass: 'H5' },
+  { height: 80, circum: 71, pclass: 'H4' },
+  { height: 80, circum: 68, pclass: 'H3' },
+  { height: 80, circum: 64.5, pclass: 'H2' },
+  { height: 80, circum: 61, pclass: 'H1' },
+  { height: 80, circum: 57.5, pclass: '1' },
+  { height: 80, circum: 54, pclass: '2' },
+  { height: 80, circum: 50.5, pclass: '3' },
+  { height: 85, circum: 79.5, pclass: 'H6' },
+  { height: 85, circum: 76.5, pclass: 'H5' },
+  { height: 85, circum: 73, pclass: 'H4' },
+  { height: 85, circum: 69.5, pclass: 'H3' },
+  { height: 85, circum: 66, pclass: 'H2' },
+  { height: 85, circum: 62.5, pclass: 'H1' },
+  { height: 85, circum: 58.5, pclass: '1' },
+  { height: 85, circum: 55, pclass: '2' },
+  { height: 85, circum: 51.5, pclass: '3' },
+  { height: 90, circum: 81.5, pclass: 'H6' },
+  { height: 90, circum: 78, pclass: 'H5' },
+  { height: 90, circum: 74.5, pclass: 'H4' },
+  { height: 90, circum: 71, pclass: 'H3' },
+  { height: 90, circum: 67.5, pclass: 'H2' },
+  { height: 90, circum: 64, pclass: 'H1' },
+  { height: 90, circum: 60, pclass: '1' },
+  { height: 90, circum: 56.5, pclass: '2' },
+  { height: 90, circum: 52.5, pclass: '3' },
+  { height: 95, circum: 83, pclass: 'H6' },
+  { height: 95, circum: 79.5, pclass: 'H5' },
+  { height: 95, circum: 76, pclass: 'H4' },
+  { height: 95, circum: 72.5, pclass: 'H3' },
+  { height: 95, circum: 69, pclass: 'H2' },
+  { height: 95, circum: 65, pclass: 'H1' },
+  { height: 95, circum: 61.5, pclass: '1' },
+  { height: 95, circum: 57.5, pclass: '2' },
+  { height: 100, circum: 84.5, pclass: 'H6' },
+  { height: 100, circum: 81, pclass: 'H5' },
+  { height: 100, circum: 77.5, pclass: 'H4' },
+  { height: 100, circum: 74, pclass: 'H3' },
+  { height: 100, circum: 70, pclass: 'H2' },
+  { height: 100, circum: 66.5, pclass: 'H1' },
+  { height: 100, circum: 62.5, pclass: '1' },
+  { height: 100, circum: 58.5, pclass: '2' },
+  { height: 105, circum: 86, pclass: 'H6' },
+  { height: 105, circum: 82.5, pclass: 'H5' },
+  { height: 105, circum: 79, pclass: 'H4' },
+  { height: 105, circum: 75, pclass: 'H3' },
+  { height: 105, circum: 71.5, pclass: 'H2' },
+  { height: 105, circum: 67.5, pclass: 'H1' },
+  { height: 105, circum: 63.5, pclass: '1' },
+  { height: 105, circum: 60, pclass: '2' },
+  { height: 110, circum: 87.5, pclass: 'H6' },
+  { height: 110, circum: 84, pclass: 'H5' },
+  { height: 110, circum: 80.5, pclass: 'H4' },
+  { height: 110, circum: 76.5, pclass: 'H3' },
+  { height: 110, circum: 72.5, pclass: 'H2' },
+  { height: 110, circum: 69, pclass: 'H1' },
+  { height: 110, circum: 65, pclass: '1' },
+  { height: 110, circum: 61, pclass: '2' },
+  { height: 115, circum: 89, pclass: 'H6' },
+  { height: 115, circum: 85.5, pclass: 'H5' },
+  { height: 115, circum: 81.5, pclass: 'H4' },
+  { height: 115, circum: 78, pclass: 'H3' },
+  { height: 115, circum: 74, pclass: 'H2' },
+  { height: 115, circum: 70, pclass: 'H1' },
+  { height: 115, circum: 66, pclass: '1' },
+  { height: 115, circum: 62, pclass: '2' },
+  { height: 120, circum: 90.5, pclass: 'H6' },
+  { height: 120, circum: 87, pclass: 'H5' },
+  { height: 120, circum: 83, pclass: 'H4' },
+  { height: 120, circum: 79, pclass: 'H3' },
+  { height: 120, circum: 75, pclass: 'H2' },
+  { height: 120, circum: 71, pclass: 'H1' },
+  { height: 120, circum: 67, pclass: '1' },
+  { height: 120, circum: 63, pclass: '2' },
+  { height: 125, circum: 92, pclass: 'H6' },
+  { height: 125, circum: 88, pclass: 'H5' },
+  { height: 125, circum: 84, pclass: 'H4' },
+  { height: 125, circum: 80, pclass: 'H3' },
+  { height: 125, circum: 76, pclass: 'H2' },
+  { height: 125, circum: 72, pclass: 'H1' },
+  { height: 125, circum: 68, pclass: '1' },
+  { height: 125, circum: 64, pclass: '2' },
+];
+
+var nwc = [
+  { height: 20, circum: 38, pclass: '1' },
+  { height: 20, circum: 35.5, pclass: '2' },
+  { height: 20, circum: 33, pclass: '3' },
+  { height: 20, circum: 30.5, pclass: '4' },
+  { height: 20, circum: 28, pclass: '5' },
+  { height: 20, circum: 26, pclass: '6' },
+  { height: 20, circum: 24, pclass: '7' },
+  { height: 20, circum: 22, pclass: '9' },
+  { height: 20, circum: 17.5, pclass: '10' },
+  { height: 25, circum: 42, pclass: '1' },
+  { height: 25, circum: 39.5, pclass: '2' },
+  { height: 25, circum: 36.5, pclass: '3' },
+  { height: 25, circum: 34, pclass: '4' },
+  { height: 25, circum: 31.5, pclass: '5' },
+  { height: 25, circum: 29, pclass: '6' },
+  { height: 25, circum: 27, pclass: '7' },
+  { height: 25, circum: 24, pclass: '9' },
+  { height: 25, circum: 19.5, pclass: '10' },
+  { height: 30, circum: 45.5, pclass: '1' },
+  { height: 30, circum: 43, pclass: '2' },
+  { height: 30, circum: 40, pclass: '3' },
+  { height: 30, circum: 37, pclass: '4' },
+  { height: 30, circum: 34.5, pclass: '5' },
+  { height: 30, circum: 32, pclass: '6' },
+  { height: 30, circum: 29.5, pclass: '7' },
+  { height: 30, circum: 26, pclass: '9' },
+  { height: 35, circum: 49, pclass: '1' },
+  { height: 35, circum: 46, pclass: '2' },
+  { height: 35, circum: 42.5, pclass: '3' },
+  { height: 35, circum: 39.5, pclass: '4' },
+  { height: 35, circum: 37, pclass: '5' },
+  { height: 35, circum: 34, pclass: '6' },
+  { height: 35, circum: 31.5, pclass: '7' },
+  { height: 40, circum: 51.5, pclass: '1' },
+  { height: 40, circum: 48.5, pclass: '2' },
+  { height: 40, circum: 45, pclass: '3' },
+  { height: 40, circum: 42, pclass: '4' },
+  { height: 40, circum: 39, pclass: '5' },
+  { height: 40, circum: 36, pclass: '6' },
+  { height: 45, circum: 54.5, pclass: '1' },
+  { height: 45, circum: 51, pclass: '2' },
+  { height: 45, circum: 47.5, pclass: '3' },
+  { height: 45, circum: 44, pclass: '4' },
+  { height: 45, circum: 41, pclass: '5' },
+  { height: 55, circum: 59, pclass: '1' },
+  { height: 55, circum: 55.5, pclass: '2' },
+  { height: 55, circum: 43.5, pclass: '3' },
+  { height: 55, circum: 48, pclass: '4' },
+  { height: 60, circum: 61, pclass: '1' },
+  { height: 60, circum: 57.5, pclass: '2' },
+  { height: 60, circum: 53.5, pclass: '3' },
+  { height: 60, circum: 50, pclass: '4' },
+];
+
+var scots = [
+  { height: 20, circum: 30.5, pclass: '1' },
+  { height: 20, circum: 29, pclass: '2' },
+  { height: 20, circum: 27, pclass: '3' },
+  { height: 20, circum: 25, pclass: '4' },
+  { height: 20, circum: 23, pclass: '5' },
+  { height: 20, circum: 21, pclass: '6' },
+  { height: 20, circum: 19.5, pclass: '7' },
+  { height: 25, circum: 33.5, pclass: '1' },
+  { height: 25, circum: 31.5, pclass: '2' },
+  { height: 25, circum: 29.5, pclass: '3' },
+  { height: 25, circum: 27.5, pclass: '4' },
+  { height: 25, circum: 25, pclass: '5' },
+  { height: 25, circum: 23.5, pclass: '6' },
+  { height: 25, circum: 21.5, pclass: '7' },
+  { height: 30, circum: 36.5, pclass: '1' },
+  { height: 30, circum: 34, pclass: '2' },
+  { height: 30, circum: 32, pclass: '3' },
+  { height: 30, circum: 29.5, pclass: '4' },
+  { height: 30, circum: 27.5, pclass: '5' },
+  { height: 30, circum: 25, pclass: '6' },
+  { height: 30, circum: 23.5, pclass: '7' },
+  { height: 35, circum: 39, pclass: '1' },
+  { height: 35, circum: 36.5, pclass: '2' },
+  { height: 35, circum: 34, pclass: '3' },
+  { height: 35, circum: 31.5, pclass: '4' },
+  { height: 35, circum: 29, pclass: '5' },
+  { height: 35, circum: 27, pclass: '6' },
+  { height: 35, circum: 25, pclass: '7' },
+  { height: 40, circum: 41, pclass: '1' },
+  { height: 40, circum: 38.5, pclass: '2' },
+  { height: 40, circum: 36, pclass: '3' },
+  { height: 40, circum: 33.5, pclass: '4' },
+  { height: 40, circum: 31, pclass: '5' },
+  { height: 40, circum: 28.5, pclass: '6' },
+  { height: 40, circum: 26.5, pclass: '7' },
+  { height: 45, circum: 43.5, pclass: '1' },
+  { height: 45, circum: 40.5, pclass: '2' },
+  { height: 45, circum: 38, pclass: '3' },
+  { height: 45, circum: 35, pclass: '4' },
+  { height: 45, circum: 32.5, pclass: '5' },
+  { height: 45, circum: 30, pclass: '6' },
+  { height: 45, circum: 28, pclass: '7' },
+];
+
+var sp = [
+  { height: 20, circum: 42, pclass: 'H6' },
+  { height: 20, circum: 40.5, pclass: 'H5' },
+  { height: 20, circum: 38.5, pclass: 'H4' },
+  { height: 20, circum: 36.5, pclass: 'H3' },
+  { height: 20, circum: 34.5, pclass: 'H2' },
+  { height: 20, circum: 33, pclass: 'H1' },
+  { height: 20, circum: 31, pclass: '1' },
+  { height: 20, circum: 29, pclass: '2' },
+  { height: 20, circum: 27, pclass: '3' },
+  { height: 20, circum: 25, pclass: '4' },
+  { height: 20, circum: 23, pclass: '5' },
+  { height: 20, circum: 21, pclass: '6' },
+  { height: 20, circum: 19.5, pclass: '7' },
+  { height: 20, circum: 17.5, pclass: '9' },
+  { height: 20, circum: 14, pclass: '10' },
+  { height: 25, circum: 46, pclass: 'H6' },
+  { height: 25, circum: 44, pclass: 'H5' },
+  { height: 25, circum: 42, pclass: 'H4' },
+  { height: 25, circum: 40, pclass: 'H3' },
+  { height: 25, circum: 38, pclass: 'H2' },
+  { height: 25, circum: 36, pclass: 'H1' },
+  { height: 25, circum: 33.5, pclass: '1' },
+  { height: 25, circum: 31.5, pclass: '2' },
+  { height: 25, circum: 29.5, pclass: '3' },
+  { height: 25, circum: 27.5, pclass: '4' },
+  { height: 25, circum: 25.5, pclass: '5' },
+  { height: 25, circum: 23, pclass: '6' },
+  { height: 25, circum: 21.5, pclass: '7' },
+  { height: 25, circum: 19.5, pclass: '9' },
+  { height: 25, circum: 15, pclass: '10' },
+  { height: 30, circum: 49.5, pclass: 'H6' },
+  { height: 30, circum: 47.5, pclass: 'H5' },
+  { height: 30, circum: 45.5, pclass: 'H4' },
+  { height: 30, circum: 43, pclass: 'H3' },
+  { height: 30, circum: 41, pclass: 'H2' },
+  { height: 30, circum: 38.5, pclass: 'H1' },
+  { height: 30, circum: 36.5, pclass: '1' },
+  { height: 30, circum: 34, pclass: '2' },
+  { height: 30, circum: 32, pclass: '3' },
+  { height: 30, circum: 29.5, pclass: '4' },
+  { height: 30, circum: 27.5, pclass: '5' },
+  { height: 30, circum: 25, pclass: '6' },
+  { height: 30, circum: 23.5, pclass: '7' },
+  { height: 30, circum: 20.5, pclass: '9' },
+  { height: 35, circum: 53, pclass: 'H6' },
+  { height: 35, circum: 50.5, pclass: 'H5' },
+  { height: 35, circum: 48.5, pclass: 'H4' },
+  { height: 35, circum: 46, pclass: 'H3' },
+  { height: 35, circum: 43.5, pclass: 'H2' },
+  { height: 35, circum: 41.5, pclass: 'H1' },
+  { height: 35, circum: 39, pclass: '1' },
+  { height: 35, circum: 36.5, pclass: '2' },
+  { height: 35, circum: 34, pclass: '3' },
+  { height: 35, circum: 31.5, pclass: '4' },
+  { height: 35, circum: 29, pclass: '5' },
+  { height: 35, circum: 27, pclass: '6' },
+  { height: 35, circum: 25, pclass: '7' },
+  { height: 40, circum: 56, pclass: 'H6' },
+  { height: 40, circum: 53.5, pclass: 'H5' },
+  { height: 40, circum: 51, pclass: 'H4' },
+  { height: 40, circum: 48.5, pclass: 'H3' },
+  { height: 40, circum: 46, pclass: 'H2' },
+  { height: 40, circum: 43.5, pclass: 'H1' },
+  { height: 40, circum: 41, pclass: '1' },
+  { height: 40, circum: 38.5, pclass: '2' },
+  { height: 40, circum: 36, pclass: '3' },
+  { height: 40, circum: 33.5, pclass: '4' },
+  { height: 40, circum: 31, pclass: '5' },
+  { height: 40, circum: 28.5, pclass: '6' },
+  { height: 45, circum: 58.5, pclass: 'H6' },
+  { height: 45, circum: 56, pclass: 'H5' },
+  { height: 45, circum: 53.5, pclass: 'H4' },
+  { height: 45, circum: 51, pclass: 'H3' },
+  { height: 45, circum: 48.5, pclass: 'H2' },
+  { height: 45, circum: 45.5, pclass: 'H1' },
+  { height: 45, circum: 43, pclass: '1' },
+  { height: 45, circum: 40.5, pclass: '2' },
+  { height: 45, circum: 37.5, pclass: '3' },
+  { height: 45, circum: 35, pclass: '4' },
+  { height: 45, circum: 32.5, pclass: '5' },
+  { height: 45, circum: 30, pclass: '6' },
+  { height: 55, circum: 63.5, pclass: 'H6' },
+  { height: 55, circum: 60.5, pclass: 'H5' },
+  { height: 55, circum: 58, pclass: 'H4' },
+  { height: 55, circum: 55, pclass: 'H3' },
+  { height: 55, circum: 52, pclass: 'H2' },
+  { height: 55, circum: 49.5, pclass: 'H1' },
+  { height: 55, circum: 46.5, pclass: '1' },
+  { height: 55, circum: 43.5, pclass: '2' },
+  { height: 55, circum: 40.5, pclass: '3' },
+  { height: 55, circum: 38, pclass: '4' },
+  { height: 60, circum: 65.5, pclass: 'H6' },
+  { height: 60, circum: 62.5, pclass: 'H5' },
+  { height: 60, circum: 59.5, pclass: 'H4' },
+  { height: 60, circum: 57, pclass: 'H3' },
+  { height: 60, circum: 54, pclass: 'H2' },
+  { height: 60, circum: 51, pclass: 'H1' },
+  { height: 60, circum: 48, pclass: '1' },
+  { height: 60, circum: 45, pclass: '2' },
+  { height: 60, circum: 42, pclass: '3' },
+  { height: 60, circum: 39, pclass: '4' },
+  { height: 65, circum: 67.5, pclass: 'H6' },
+  { height: 65, circum: 64.5, pclass: 'H5' },
+  { height: 65, circum: 61.5, pclass: 'H4' },
+  { height: 65, circum: 58.5, pclass: 'H3' },
+  { height: 65, circum: 55.5, pclass: 'H2' },
+  { height: 65, circum: 52.5, pclass: 'H1' },
+  { height: 65, circum: 49.5, pclass: '1' },
+  { height: 65, circum: 46.5, pclass: '2' },
+  { height: 65, circum: 43.5, pclass: '3' },
+  { height: 65, circum: 40.5, pclass: '4' },
+  { height: 70, circum: 69, pclass: 'H6' },
+  { height: 70, circum: 66.5, pclass: 'H5' },
+  { height: 70, circum: 63.5, pclass: 'H4' },
+  { height: 70, circum: 60.5, pclass: 'H3' },
+  { height: 70, circum: 57, pclass: 'H2' },
+  { height: 70, circum: 54, pclass: 'H1' },
+  { height: 70, circum: 51, pclass: '1' },
+  { height: 70, circum: 48, pclass: '2' },
+  { height: 70, circum: 45, pclass: '3' },
+  { height: 70, circum: 41.5, pclass: '4' },
+  { height: 75, circum: 71, pclass: 'H6' },
+  { height: 75, circum: 68, pclass: 'H5' },
+  { height: 75, circum: 65, pclass: 'H4' },
+  { height: 75, circum: 62, pclass: 'H3' },
+  { height: 75, circum: 59, pclass: 'H2' },
+  { height: 75, circum: 55.5, pclass: 'H1' },
+  { height: 75, circum: 52.5, pclass: '1' },
+  { height: 75, circum: 49, pclass: '2' },
+  { height: 75, circum: 46, pclass: '3' },
+  { height: 80, circum: 72.5, pclass: 'H6' },
+  { height: 80, circum: 69.5, pclass: 'H5' },
+  { height: 80, circum: 66.5, pclass: 'H4' },
+  { height: 80, circum: 63.5, pclass: 'H3' },
+  { height: 80, circum: 60, pclass: 'H2' },
+  { height: 80, circum: 57, pclass: 'H1' },
+  { height: 80, circum: 54, pclass: '1' },
+  { height: 80, circum: 50.5, pclass: '2' },
+  { height: 80, circum: 47, pclass: '3' },
+  { height: 85, circum: 74.5, pclass: 'H6' },
+  { height: 85, circum: 71.5, pclass: 'H5' },
+  { height: 85, circum: 68, pclass: 'H4' },
+  { height: 85, circum: 65, pclass: 'H3' },
+  { height: 85, circum: 61.5, pclass: 'H2' },
+  { height: 85, circum: 58.5, pclass: 'H1' },
+  { height: 85, circum: 55, pclass: '1' },
+  { height: 85, circum: 51.5, pclass: '2' },
+  { height: 85, circum: 48, pclass: '3' },
+  { height: 90, circum: 76, pclass: 'H6' },
+  { height: 90, circum: 73, pclass: 'H5' },
+  { height: 90, circum: 69.5, pclass: 'H4' },
+  { height: 90, circum: 66.5, pclass: 'H3' },
+  { height: 90, circum: 63, pclass: 'H2' },
+  { height: 90, circum: 59.5, pclass: 'H1' },
+  { height: 90, circum: 56, pclass: '1' },
+  { height: 90, circum: 53, pclass: '2' },
+  { height: 90, circum: 49, pclass: '3' },
+  { height: 95, circum: 77.5, pclass: 'H6' },
+  { height: 95, circum: 74.5, pclass: 'H5' },
+  { height: 95, circum: 71, pclass: 'H4' },
+  { height: 95, circum: 67.5, pclass: 'H3' },
+  { height: 95, circum: 64.5, pclass: 'H2' },
+  { height: 95, circum: 61, pclass: 'H1' },
+  { height: 95, circum: 57, pclass: '1' },
+  { height: 95, circum: 54, pclass: '2' },
+  { height: 100, circum: 79, pclass: 'H6' },
+  { height: 100, circum: 76, pclass: 'H5' },
+  { height: 100, circum: 72.5, pclass: 'H4' },
+  { height: 100, circum: 69, pclass: 'H3' },
+  { height: 100, circum: 65.5, pclass: 'H2' },
+  { height: 100, circum: 62, pclass: 'H1' },
+  { height: 100, circum: 58.5, pclass: '1' },
+  { height: 100, circum: 55, pclass: '2' },
+  { height: 105, circum: 80.5, pclass: 'H6' },
+  { height: 105, circum: 77, pclass: 'H5' },
+  { height: 105, circum: 74, pclass: 'H4' },
+  { height: 105, circum: 70.5, pclass: 'H3' },
+  { height: 105, circum: 67, pclass: 'H2' },
+  { height: 105, circum: 63, pclass: 'H1' },
+  { height: 105, circum: 59.5, pclass: '1' },
+  { height: 105, circum: 56, pclass: '2' },
+  { height: 110, circum: 82, pclass: 'H6' },
+  { height: 110, circum: 78.5, pclass: 'H5' },
+  { height: 110, circum: 75, pclass: 'H4' },
+  { height: 110, circum: 71.5, pclass: 'H3' },
+  { height: 110, circum: 68, pclass: 'H2' },
+  { height: 110, circum: 64.5, pclass: 'H1' },
+  { height: 110, circum: 60.5, pclass: '1' },
+  { height: 110, circum: 57, pclass: '2' },
+  { height: 115, circum: 83.5, pclass: 'H6' },
+  { height: 115, circum: 80, pclass: 'H5' },
+  { height: 115, circum: 76.5, pclass: 'H4' },
+  { height: 115, circum: 72.5, pclass: 'H3' },
+  { height: 115, circum: 69, pclass: 'H2' },
+  { height: 115, circum: 65.5, pclass: 'H1' },
+  { height: 115, circum: 61.5, pclass: '1' },
+  { height: 115, circum: 58, pclass: '2' },
+  { height: 120, circum: 85, pclass: 'H6' },
+  { height: 120, circum: 81, pclass: 'H5' },
+  { height: 120, circum: 77.5, pclass: 'H4' },
+  { height: 120, circum: 74, pclass: 'H3' },
+  { height: 120, circum: 70, pclass: 'H2' },
+  { height: 120, circum: 66.5, pclass: 'H1' },
+  { height: 120, circum: 62.5, pclass: '1' },
+  { height: 120, circum: 59, pclass: '2' },
+  { height: 125, circum: 86, pclass: 'H6' },
+  { height: 125, circum: 82.5, pclass: 'H5' },
+  { height: 125, circum: 78.5, pclass: 'H4' },
+  { height: 125, circum: 75, pclass: 'H3' },
+  { height: 125, circum: 71, pclass: 'H2' },
+  { height: 125, circum: 67.5, pclass: 'H1' },
+  { height: 125, circum: 63.5, pclass: '1' },
+  { height: 125, circum: 59.5, pclass: '2' },
+];
+
+var wl = [
+  { height: 20, circum: 41.5, pclass: 'H6' },
+  { height: 20, circum: 39.5, pclass: 'H5' },
+  { height: 20, circum: 38, pclass: 'H4' },
+  { height: 20, circum: 36, pclass: 'H3' },
+  { height: 20, circum: 34, pclass: 'H2' },
+  { height: 20, circum: 32.5, pclass: 'H1' },
+  { height: 20, circum: 30, pclass: '1' },
+  { height: 20, circum: 28.5, pclass: '2' },
+  { height: 20, circum: 26.5, pclass: '3' },
+  { height: 20, circum: 24.5, pclass: '4' },
+  { height: 20, circum: 22.5, pclass: '5' },
+  { height: 20, circum: 21, pclass: '6' },
+  { height: 20, circum: 19, pclass: '7' },
+  { height: 20, circum: 17, pclass: '9' },
+  { height: 20, circum: 13.5, pclass: '10' },
+  { height: 25, circum: 45.5, pclass: 'H6' },
+  { height: 25, circum: 43.5, pclass: 'H5' },
+  { height: 25, circum: 41.5, pclass: 'H4' },
+  { height: 25, circum: 39.5, pclass: 'H3' },
+  { height: 25, circum: 37.5, pclass: 'H2' },
+  { height: 25, circum: 35.5, pclass: 'H1' },
+  { height: 25, circum: 33, pclass: '1' },
+  { height: 25, circum: 31, pclass: '2' },
+  { height: 25, circum: 29, pclass: '3' },
+  { height: 25, circum: 26.5, pclass: '4' },
+  { height: 25, circum: 24.5, pclass: '5' },
+  { height: 25, circum: 23, pclass: '6' },
+  { height: 25, circum: 21, pclass: '7' },
+  { height: 25, circum: 18.5, pclass: '9' },
+  { height: 25, circum: 14.5, pclass: '10' },
+  { height: 30, circum: 49, pclass: 'H6' },
+  { height: 30, circum: 47, pclass: 'H5' },
+  { height: 30, circum: 44.5, pclass: 'H4' },
+  { height: 30, circum: 42.5, pclass: 'H3' },
+  { height: 30, circum: 40.5, pclass: 'H2' },
+  { height: 30, circum: 38, pclass: 'H1' },
+  { height: 30, circum: 35.5, pclass: '1' },
+  { height: 30, circum: 33.5, pclass: '2' },
+  { height: 30, circum: 31, pclass: '3' },
+  { height: 30, circum: 29, pclass: '4' },
+  { height: 30, circum: 26.5, pclass: '5' },
+  { height: 30, circum: 24.5, pclass: '6' },
+  { height: 30, circum: 23, pclass: '7' },
+  { height: 30, circum: 19.5, pclass: '9' },
+  { height: 35, circum: 52, pclass: 'H6' },
+  { height: 35, circum: 50, pclass: 'H5' },
+  { height: 35, circum: 47.5, pclass: 'H4' },
+  { height: 35, circum: 45.5, pclass: 'H3' },
+  { height: 35, circum: 43, pclass: 'H2' },
+  { height: 35, circum: 40.5, pclass: 'H1' },
+  { height: 35, circum: 38, pclass: '1' },
+  { height: 35, circum: 35.5, pclass: '2' },
+  { height: 35, circum: 33, pclass: '3' },
+  { height: 35, circum: 31, pclass: '4' },
+  { height: 35, circum: 28.5, pclass: '5' },
+  { height: 35, circum: 26.5, pclass: '6' },
+  { height: 35, circum: 24.5, pclass: '7' },
+  { height: 40, circum: 55, pclass: 'H6' },
+  { height: 40, circum: 52.5, pclass: 'H5' },
+  { height: 40, circum: 50.5, pclass: 'H4' },
+  { height: 40, circum: 48, pclass: 'H3' },
+  { height: 40, circum: 45.5, pclass: 'H2' },
+  { height: 40, circum: 43, pclass: 'H1' },
+  { height: 40, circum: 40, pclass: '1' },
+  { height: 40, circum: 37.5, pclass: '2' },
+  { height: 40, circum: 35, pclass: '3' },
+  { height: 40, circum: 32.5, pclass: '4' },
+  { height: 40, circum: 30, pclass: '5' },
+  { height: 40, circum: 28, pclass: '6' },
+  { height: 45, circum: 57.5, pclass: 'H6' },
+  { height: 45, circum: 55, pclass: 'H5' },
+  { height: 45, circum: 52.5, pclass: 'H4' },
+  { height: 45, circum: 50, pclass: 'H3' },
+  { height: 45, circum: 47.5, pclass: 'H2' },
+  { height: 45, circum: 45, pclass: 'H1' },
+  { height: 45, circum: 42, pclass: '1' },
+  { height: 45, circum: 39.5, pclass: '2' },
+  { height: 45, circum: 37, pclass: '3' },
+  { height: 45, circum: 34, pclass: '4' },
+  { height: 45, circum: 31.5, pclass: '5' },
+  { height: 45, circum: 29, pclass: '6' },
+  { height: 55, circum: 62, pclass: 'H6' },
+  { height: 55, circum: 59.5, pclass: 'H5' },
+  { height: 55, circum: 57, pclass: 'H4' },
+  { height: 55, circum: 54, pclass: 'H3' },
+  { height: 55, circum: 51.5, pclass: 'H2' },
+  { height: 55, circum: 48.5, pclass: 'H1' },
+  { height: 55, circum: 45.5, pclass: '1' },
+  { height: 55, circum: 42.5, pclass: '2' },
+  { height: 55, circum: 40, pclass: '3' },
+  { height: 55, circum: 37, pclass: '4' },
+  { height: 60, circum: 64.5, pclass: 'H6' },
+  { height: 60, circum: 61.5, pclass: 'H5' },
+  { height: 60, circum: 59, pclass: 'H4' },
+  { height: 60, circum: 56, pclass: 'H3' },
+  { height: 60, circum: 53, pclass: 'H2' },
+  { height: 60, circum: 50, pclass: 'H1' },
+  { height: 60, circum: 47, pclass: '1' },
+  { height: 60, circum: 44, pclass: '2' },
+  { height: 60, circum: 41, pclass: '3' },
+  { height: 60, circum: 38.5, pclass: '4' },
+  { height: 65, circum: 66, pclass: 'H6' },
+  { height: 65, circum: 63.5, pclass: 'H5' },
+  { height: 65, circum: 60.5, pclass: 'H4' },
+  { height: 65, circum: 57.5, pclass: 'H3' },
+  { height: 65, circum: 55, pclass: 'H2' },
+  { height: 65, circum: 52, pclass: 'H1' },
+  { height: 65, circum: 48.5, pclass: '1' },
+  { height: 65, circum: 46, pclass: '2' },
+  { height: 65, circum: 42.5, pclass: '3' },
+  { height: 65, circum: 39.5, pclass: '4' },
+  { height: 70, circum: 68, pclass: 'H6' },
+  { height: 70, circum: 65, pclass: 'H5' },
+  { height: 70, circum: 62.5, pclass: 'H4' },
+  { height: 70, circum: 59.5, pclass: 'H3' },
+  { height: 70, circum: 56.5, pclass: 'H2' },
+  { height: 70, circum: 53.5, pclass: 'H1' },
+  { height: 70, circum: 50, pclass: '1' },
+  { height: 70, circum: 47, pclass: '2' },
+  { height: 70, circum: 44, pclass: '3' },
+  { height: 70, circum: 41, pclass: '4' },
+  { height: 75, circum: 70, pclass: 'H6' },
+  { height: 75, circum: 67, pclass: 'H5' },
+  { height: 75, circum: 64, pclass: 'H4' },
+  { height: 75, circum: 61, pclass: 'H3' },
+  { height: 75, circum: 58, pclass: 'H2' },
+  { height: 75, circum: 54.5, pclass: 'H1' },
+  { height: 75, circum: 51.5, pclass: '1' },
+  { height: 75, circum: 48, pclass: '2' },
+  { height: 75, circum: 45, pclass: '3' },
+  { height: 80, circum: 71.5, pclass: 'H6' },
+  { height: 80, circum: 68.5, pclass: 'H5' },
+  { height: 80, circum: 65.5, pclass: 'H4' },
+  { height: 80, circum: 62.5, pclass: 'H3' },
+  { height: 80, circum: 59, pclass: 'H2' },
+  { height: 80, circum: 56, pclass: 'H1' },
+  { height: 80, circum: 52.5, pclass: '1' },
+  { height: 80, circum: 49.5, pclass: '2' },
+  { height: 80, circum: 46, pclass: '3' },
+  { height: 85, circum: 73, pclass: 'H6' },
+  { height: 85, circum: 70, pclass: 'H5' },
+  { height: 85, circum: 67, pclass: 'H4' },
+  { height: 85, circum: 64, pclass: 'H3' },
+  { height: 85, circum: 60.5, pclass: 'H2' },
+  { height: 85, circum: 57.5, pclass: 'H1' },
+  { height: 85, circum: 54, pclass: '1' },
+  { height: 85, circum: 50.5, pclass: '2' },
+  { height: 85, circum: 47, pclass: '3' },
+  { height: 90, circum: 74.5, pclass: 'H6' },
+  { height: 90, circum: 71.5, pclass: 'H5' },
+  { height: 90, circum: 68.5, pclass: 'H4' },
+  { height: 90, circum: 65, pclass: 'H3' },
+  { height: 90, circum: 62, pclass: 'H2' },
+  { height: 90, circum: 58.5, pclass: 'H1' },
+  { height: 90, circum: 55, pclass: '1' },
+  { height: 90, circum: 51.5, pclass: '2' },
+  { height: 90, circum: 48.5, pclass: '3' },
+  { height: 95, circum: 76.5, pclass: 'H6' },
+  { height: 95, circum: 73, pclass: 'H5' },
+  { height: 95, circum: 70, pclass: 'H4' },
+  { height: 95, circum: 66.5, pclass: 'H3' },
+  { height: 95, circum: 63, pclass: 'H2' },
+  { height: 95, circum: 60, pclass: 'H1' },
+  { height: 95, circum: 56.5, pclass: '1' },
+  { height: 95, circum: 53, pclass: '2' },
+  { height: 100, circum: 78, pclass: 'H6' },
+  { height: 100, circum: 74.5, pclass: 'H5' },
+  { height: 100, circum: 71, pclass: 'H4' },
+  { height: 100, circum: 68, pclass: 'H3' },
+  { height: 100, circum: 64.5, pclass: 'H2' },
+  { height: 100, circum: 61, pclass: 'H1' },
+  { height: 100, circum: 57.5, pclass: '1' },
+  { height: 100, circum: 54, pclass: '2' },
+  { height: 105, circum: 79, pclass: 'H6' },
+  { height: 105, circum: 76, pclass: 'H5' },
+  { height: 105, circum: 72.5, pclass: 'H4' },
+  { height: 105, circum: 69, pclass: 'H3' },
+  { height: 105, circum: 65.5, pclass: 'H2' },
+  { height: 105, circum: 62, pclass: 'H1' },
+  { height: 105, circum: 58.5, pclass: '1' },
+  { height: 105, circum: 55, pclass: '2' },
+  { height: 110, circum: 80.5, pclass: 'H6' },
+  { height: 110, circum: 77, pclass: 'H5' },
+  { height: 110, circum: 73.5, pclass: 'H4' },
+  { height: 110, circum: 70, pclass: 'H3' },
+  { height: 110, circum: 66.5, pclass: 'H2' },
+  { height: 110, circum: 63, pclass: 'H1' },
+  { height: 110, circum: 59.5, pclass: '1' },
+  { height: 110, circum: 56, pclass: '2' },
+  { height: 115, circum: 82, pclass: 'H6' },
+  { height: 115, circum: 78.5, pclass: 'H5' },
+  { height: 115, circum: 75, pclass: 'H4' },
+  { height: 115, circum: 71.5, pclass: 'H3' },
+  { height: 115, circum: 68, pclass: 'H2' },
+  { height: 115, circum: 64, pclass: 'H1' },
+  { height: 115, circum: 60.5, pclass: '1' },
+  { height: 115, circum: 57, pclass: '2' },
+  { height: 120, circum: 83, pclass: 'H6' },
+  { height: 120, circum: 79.5, pclass: 'H5' },
+  { height: 120, circum: 76, pclass: 'H4' },
+  { height: 120, circum: 72.5, pclass: 'H3' },
+  { height: 120, circum: 69, pclass: 'H2' },
+  { height: 120, circum: 65, pclass: 'H1' },
+  { height: 120, circum: 61.5, pclass: '1' },
+  { height: 120, circum: 58, pclass: '2' },
+  { height: 125, circum: 84.5, pclass: 'H6' },
+  { height: 125, circum: 81, pclass: 'H5' },
+  { height: 125, circum: 77.5, pclass: 'H4' },
+  { height: 125, circum: 73.5, pclass: 'H3' },
+  { height: 125, circum: 70, pclass: 'H2' },
+  { height: 125, circum: 66, pclass: 'H1' },
+  { height: 125, circum: 62.5, pclass: '1' },
+  { height: 125, circum: 58.5, pclass: '2' },
+];
+
+var wrc = [
+  { height: 20, circum: 46, pclass: 'H6' },
+  { height: 20, circum: 44, pclass: 'H5' },
+  { height: 20, circum: 42, pclass: 'H4' },
+  { height: 20, circum: 40, pclass: 'H3' },
+  { height: 20, circum: 38, pclass: 'H2' },
+  { height: 20, circum: 36, pclass: 'H1' },
+  { height: 20, circum: 33.5, pclass: '1' },
+  { height: 20, circum: 31.5, pclass: '2' },
+  { height: 20, circum: 29.5, pclass: '3' },
+  { height: 20, circum: 27, pclass: '4' },
+  { height: 20, circum: 25, pclass: '5' },
+  { height: 20, circum: 23, pclass: '6' },
+  { height: 20, circum: 21.5, pclass: '7' },
+  { height: 20, circum: 18.5, pclass: '9' },
+  { height: 20, circum: 15, pclass: '10' },
+  { height: 25, circum: 50.5, pclass: 'H6' },
+  { height: 25, circum: 48.5, pclass: 'H5' },
+  { height: 25, circum: 46, pclass: 'H4' },
+  { height: 25, circum: 44, pclass: 'H3' },
+  { height: 25, circum: 41.5, pclass: 'H2' },
+  { height: 25, circum: 39.5, pclass: 'H1' },
+  { height: 25, circum: 37, pclass: '1' },
+  { height: 25, circum: 34.5, pclass: '2' },
+  { height: 25, circum: 32.5, pclass: '3' },
+  { height: 25, circum: 30, pclass: '4' },
+  { height: 25, circum: 28, pclass: '5' },
+  { height: 25, circum: 25.5, pclass: '6' },
+  { height: 25, circum: 24, pclass: '7' },
+  { height: 25, circum: 20.5, pclass: '9' },
+  { height: 25, circum: 16.5, pclass: '10' },
+  { height: 30, circum: 54.5, pclass: 'H6' },
+  { height: 30, circum: 52, pclass: 'H5' },
+  { height: 30, circum: 50, pclass: 'H4' },
+  { height: 30, circum: 47.5, pclass: 'H3' },
+  { height: 30, circum: 45, pclass: 'H2' },
+  { height: 30, circum: 42.5, pclass: 'H1' },
+  { height: 30, circum: 40, pclass: '1' },
+  { height: 30, circum: 37.5, pclass: '2' },
+  { height: 30, circum: 35, pclass: '3' },
+  { height: 30, circum: 32.5, pclass: '4' },
+  { height: 30, circum: 30, pclass: '5' },
+  { height: 30, circum: 28, pclass: '6' },
+  { height: 30, circum: 26, pclass: '7' },
+  { height: 30, circum: 22, pclass: '9' },
+  { height: 35, circum: 58, pclass: 'H6' },
+  { height: 35, circum: 55.5, pclass: 'H5' },
+  { height: 35, circum: 53, pclass: 'H4' },
+  { height: 35, circum: 50.5, pclass: 'H3' },
+  { height: 35, circum: 48, pclass: 'H2' },
+  { height: 35, circum: 45.5, pclass: 'H1' },
+  { height: 35, circum: 42.5, pclass: '1' },
+  { height: 35, circum: 40, pclass: '2' },
+  { height: 35, circum: 37.5, pclass: '3' },
+  { height: 35, circum: 34.5, pclass: '4' },
+  { height: 35, circum: 32, pclass: '5' },
+  { height: 35, circum: 30, pclass: '6' },
+  { height: 35, circum: 27.5, pclass: '7' },
+  { height: 40, circum: 61.5, pclass: 'H6' },
+  { height: 40, circum: 59, pclass: 'H5' },
+  { height: 40, circum: 56.5, pclass: 'H4' },
+  { height: 40, circum: 53.5, pclass: 'H3' },
+  { height: 40, circum: 51, pclass: 'H2' },
+  { height: 40, circum: 48, pclass: 'H1' },
+  { height: 40, circum: 45, pclass: '1' },
+  { height: 40, circum: 42.5, pclass: '2' },
+  { height: 40, circum: 39.5, pclass: '3' },
+  { height: 40, circum: 36.5, pclass: '4' },
+  { height: 40, circum: 34, pclass: '5' },
+  { height: 40, circum: 31.5, pclass: '6' },
+  { height: 45, circum: 64.5, pclass: 'H6' },
+  { height: 45, circum: 62, pclass: 'H5' },
+  { height: 45, circum: 59, pclass: 'H4' },
+  { height: 45, circum: 56, pclass: 'H3' },
+  { height: 45, circum: 53.5, pclass: 'H2' },
+  { height: 45, circum: 50, pclass: 'H1' },
+  { height: 45, circum: 47.5, pclass: '1' },
+  { height: 45, circum: 44.5, pclass: '2' },
+  { height: 45, circum: 41.5, pclass: '3' },
+  { height: 45, circum: 38.5, pclass: '4' },
+  { height: 45, circum: 36, pclass: '5' },
+  { height: 45, circum: 33, pclass: '6' },
+  { height: 55, circum: 70, pclass: 'H6' },
+  { height: 55, circum: 67, pclass: 'H5' },
+  { height: 55, circum: 64, pclass: 'H4' },
+  { height: 55, circum: 61, pclass: 'H3' },
+  { height: 55, circum: 57.5, pclass: 'H2' },
+  { height: 55, circum: 54.5, pclass: 'H1' },
+  { height: 55, circum: 51.5, pclass: '1' },
+  { height: 55, circum: 48.5, pclass: '2' },
+  { height: 55, circum: 45, pclass: '3' },
+  { height: 55, circum: 42, pclass: '4' },
+  { height: 60, circum: 72, pclass: 'H6' },
+  { height: 60, circum: 69, pclass: 'H5' },
+  { height: 60, circum: 66, pclass: 'H4' },
+  { height: 60, circum: 63, pclass: 'H3' },
+  { height: 60, circum: 59.5, pclass: 'H2' },
+  { height: 60, circum: 56.5, pclass: 'H1' },
+  { height: 60, circum: 53.5, pclass: '1' },
+  { height: 60, circum: 50, pclass: '2' },
+  { height: 60, circum: 46.5, pclass: '3' },
+  { height: 60, circum: 43.5, pclass: '4' },
+  { height: 65, circum: 74.5, pclass: 'H6' },
+  { height: 65, circum: 71.5, pclass: 'H5' },
+  { height: 65, circum: 68, pclass: 'H4' },
+  { height: 65, circum: 65, pclass: 'H3' },
+  { height: 65, circum: 61.5, pclass: 'H2' },
+  { height: 65, circum: 58.5, pclass: 'H1' },
+  { height: 65, circum: 55, pclass: '1' },
+  { height: 65, circum: 51.5, pclass: '2' },
+  { height: 65, circum: 48, pclass: '3' },
+  { height: 65, circum: 45, pclass: '4' },
+  { height: 70, circum: 76.5, pclass: 'H6' },
+  { height: 70, circum: 73.5, pclass: 'H5' },
+  { height: 70, circum: 70, pclass: 'H4' },
+  { height: 70, circum: 67, pclass: 'H3' },
+  { height: 70, circum: 63.5, pclass: 'H2' },
+  { height: 70, circum: 60, pclass: 'H1' },
+  { height: 70, circum: 56.5, pclass: '1' },
+  { height: 70, circum: 53, pclass: '2' },
+  { height: 70, circum: 49.5, pclass: '3' },
+  { height: 70, circum: 46, pclass: '4' },
+  { height: 75, circum: 78.5, pclass: 'H6' },
+  { height: 75, circum: 75.5, pclass: 'H5' },
+  { height: 75, circum: 72, pclass: 'H4' },
+  { height: 75, circum: 68.5, pclass: 'H3' },
+  { height: 75, circum: 65, pclass: 'H2' },
+  { height: 75, circum: 61.5, pclass: 'H1' },
+  { height: 75, circum: 58, pclass: '1' },
+  { height: 75, circum: 54.5, pclass: '2' },
+  { height: 75, circum: 51, pclass: '3' },
+  { height: 80, circum: 80.5, pclass: 'H6' },
+  { height: 80, circum: 77, pclass: 'H5' },
+  { height: 80, circum: 74, pclass: 'H4' },
+  { height: 80, circum: 70.5, pclass: 'H3' },
+  { height: 80, circum: 67, pclass: 'H2' },
+  { height: 80, circum: 63, pclass: 'H1' },
+  { height: 80, circum: 59.5, pclass: '1' },
+  { height: 80, circum: 56, pclass: '2' },
+  { height: 80, circum: 52, pclass: '3' },
+  { height: 85, circum: 82.5, pclass: 'H6' },
+  { height: 85, circum: 79, pclass: 'H5' },
+  { height: 85, circum: 75.5, pclass: 'H4' },
+  { height: 85, circum: 72, pclass: 'H3' },
+  { height: 85, circum: 68.5, pclass: 'H2' },
+  { height: 85, circum: 64.5, pclass: 'H1' },
+  { height: 85, circum: 61, pclass: '1' },
+  { height: 85, circum: 57, pclass: '2' },
+  { height: 85, circum: 53.5, pclass: '3' },
+  { height: 90, circum: 84.5, pclass: 'H6' },
+  { height: 90, circum: 81, pclass: 'H5' },
+  { height: 90, circum: 77, pclass: 'H4' },
+  { height: 90, circum: 73.5, pclass: 'H3' },
+  { height: 90, circum: 70, pclass: 'H2' },
+  { height: 90, circum: 66, pclass: 'H1' },
+  { height: 90, circum: 62.5, pclass: '1' },
+  { height: 90, circum: 58.5, pclass: '2' },
+  { height: 90, circum: 54.5, pclass: '3' },
+  { height: 95, circum: 86, pclass: 'H6' },
+  { height: 95, circum: 82.5, pclass: 'H5' },
+  { height: 95, circum: 79, pclass: 'H4' },
+  { height: 95, circum: 75, pclass: 'H3' },
+  { height: 95, circum: 71.5, pclass: 'H2' },
+  { height: 95, circum: 67.5, pclass: 'H1' },
+  { height: 95, circum: 63.5, pclass: '1' },
+  { height: 95, circum: 59.5, pclass: '2' },
+  { height: 100, circum: 87.5, pclass: 'H6' },
+  { height: 100, circum: 84, pclass: 'H5' },
+  { height: 100, circum: 80.5, pclass: 'H4' },
+  { height: 100, circum: 76.5, pclass: 'H3' },
+  { height: 100, circum: 72.5, pclass: 'H2' },
+  { height: 100, circum: 69, pclass: 'H1' },
+  { height: 100, circum: 65, pclass: '1' },
+  { height: 100, circum: 61, pclass: '2' },
+  { height: 105, circum: 89.5, pclass: 'H6' },
+  { height: 105, circum: 85.5, pclass: 'H5' },
+  { height: 105, circum: 82, pclass: 'H4' },
+  { height: 105, circum: 78, pclass: 'H3' },
+  { height: 105, circum: 74, pclass: 'H2' },
+  { height: 105, circum: 70, pclass: 'H1' },
+  { height: 105, circum: 66, pclass: '1' },
+  { height: 105, circum: 62, pclass: '2' },
+  { height: 110, circum: 91, pclass: 'H6' },
+  { height: 110, circum: 87, pclass: 'H5' },
+  { height: 110, circum: 83.5, pclass: 'H4' },
+  { height: 110, circum: 79.5, pclass: 'H3' },
+  { height: 110, circum: 75.5, pclass: 'H2' },
+  { height: 110, circum: 71.5, pclass: 'H1' },
+  { height: 110, circum: 67.5, pclass: '1' },
+  { height: 110, circum: 63, pclass: '2' },
+  { height: 115, circum: 92.5, pclass: 'H6' },
+  { height: 115, circum: 88.5, pclass: 'H5' },
+  { height: 115, circum: 84.5, pclass: 'H4' },
+  { height: 115, circum: 80.5, pclass: 'H3' },
+  { height: 115, circum: 76.5, pclass: 'H2' },
+  { height: 115, circum: 72.5, pclass: 'H1' },
+  { height: 115, circum: 68.5, pclass: '1' },
+  { height: 115, circum: 64, pclass: '2' },
+  { height: 120, circum: 94, pclass: 'H6' },
+  { height: 120, circum: 90, pclass: 'H5' },
+  { height: 120, circum: 86, pclass: 'H4' },
+  { height: 120, circum: 82, pclass: 'H3' },
+  { height: 120, circum: 78, pclass: 'H2' },
+  { height: 120, circum: 74, pclass: 'H1' },
+  { height: 120, circum: 69.5, pclass: '1' },
+  { height: 120, circum: 65, pclass: '2' },
+  { height: 125, circum: 95.5, pclass: 'H6' },
+  { height: 125, circum: 91.5, pclass: 'H5' },
+  { height: 125, circum: 87.5, pclass: 'H4' },
+  { height: 125, circum: 83, pclass: 'H3' },
+  { height: 125, circum: 79, pclass: 'H2' },
+  { height: 125, circum: 75, pclass: 'H1' },
+  { height: 125, circum: 70.5, pclass: '1' },
+  { height: 125, circum: 66, pclass: '2' },
+];
+
+// Retrieval function part 1
+mapAYC = {};
+for (var i = 0; i < ayc.length; i++) {
+  mapAYC[ayc[i].height + '_' + ayc[i].circum] = ayc[i];
+}
+mapJP = {};
+for (var i = 0; i < jp.length; i++) {
+  mapJP[jp[i].height + '_' + jp[i].circum] = jp[i];
+}
+mapNWC = {};
+for (var i = 0; i < nwc.length; i++) {
+  mapNWC[nwc[i].height + '_' + nwc[i].circum] = nwc[i];
+}
+mapScots = {};
+for (var i = 0; i < scots.length; i++) {
+  mapScots[scots[i].height + '_' + scots[i].circum] = scots[i];
+}
+mapSP = {};
+for (var i = 0; i < sp.length; i++) {
+  mapSP[sp[i].height + '_' + sp[i].circum] = sp[i];
+}
+mapWL = {};
+for (var i = 0; i < wl.length; i++) {
+  mapWL[wl[i].height + '_' + wl[i].circum] = wl[i];
+}
+mapWRC = {};
+for (var i = 0; i < wrc.length; i++) {
+  mapWRC[wrc[i].height + '_' + wrc[i].circum] = wrc[i];
+}
+
+// Retrieval function part 2
+function getItemFor(pole, hgt, circ) {
+  if (pole == 'ayc') {
+    var closest = fuzzyCicumfernces(ayc, hgt, circ);
+    return mapAYC[hgt + '_' + closest];
+  } else if (pole == 'jp') {
+    var closest = fuzzyCicumfernces(jp, hgt, circ);
+    return mapJP[hgt + '_' + closest];
+  } else if (pole == 'nwc') {
+    var closest = fuzzyCicumfernces(nwc, hgt, circ);
+    return mapNWC[hgt + '_' + closest];
+  } else if (pole == 'scots') {
+    var closest = fuzzyCicumfernces(scots, hgt, circ);
+    return mapScots[hgt + '_' + closest];
+  } else if (pole == 'sp') {
+    var closest = fuzzyCicumfernces(sp, hgt, circ);
+    return mapSP[hgt + '_' + closest];
+  } else if (pole == 'wl') {
+    var closest = fuzzyCicumfernces(wl, hgt, circ);
+    return mapWL[hgt + '_' + closest];
+  } else if (pole == 'wrc') {
+    var closest = fuzzyCicumfernces(wrc, hgt, circ);
+    return mapWRC[hgt + '_' + closest];
+  }
+}
+
+function fuzzyCicumfernces(arr, hgt, circ) {
+  var circOptions = arr.map((i) => {
+    if (i.height == hgt) {
+      return i.circum;
+    } else {
+    }
+  });
+  var filteredOptions = circOptions.filter((i) => !!i); // filter out undefined
+  var closest = findClosest(filteredOptions, circ);
+  return closest;
+}
+
+function findClosest(arr, num) {
+  //find value in list closest without going under
+  var closest = Math.max.apply(null, arr);
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] >= num - 0.5 && arr[i] < closest) closest = arr[i]; // removes .5 to adjust compenstate for fielders rounding
+  }
+  return closest;
+}
+
+function poleMaterials(material) {
+  var result = '';
+  var materials = {
+    'ALASKA YELLOW CEDAR': 'ayc',
+    'DOUGLAS FIR': 'sp',
+    'JACK PINE': 'jp',
+    'LODGEPOLE PINE': 'jp',
+    'NORTHERN WHITE CEDAR': 'nwc',
+    'PONDEROSA PINE': 'wrc',
+    'RADIATA PINE': 'jp',
+    'RED PINE': 'jp',
+    'SCANDINAVIAN PINE': 'sp',
+    'SCOTS PINE': 'scots',
+    'SOUTHERN PINE': 'scots',
+    'WESTERN FIR': 'jp',
+    'WESTERN LARCH': 'wl',
+    'WESTERN RED CEDAR': 'wrc',
+  }
+  var result = materials[material];
+  return result;
+};
+
+function classChecks(height, circum) {
+  var checkStatus = 0;
+  if (height % 5 != 0) {
+    checkStatus = 1;
+  } else if (height < 19 && height > 126) {
+    checkStatus = 2;
+  } else if (circum < 14) {
+    checkStatus = 3;
+  } else {
+    checkStatus = 0;
+  }
+  return checkStatus;
+};
+
+var button = document.getElementById('findClass');
+
+var inputMaterial = document.getElementById('material');
+var inputHeight = document.getElementById('height');
+var inputCircum = document.getElementById('circum');
+
+var outputPoleClass = document.getElementById('pclass');
+
+button.onclick = function () {
+  var material = inputMaterial.value;
+  var height = inputHeight.value;
+  var circum = inputCircum.value;
+
+  var status = classChecks(height, circum);
+  if (status == 1) {
+    item = 'Pole heights should be in incriments of 5';
+  } else if (status == 2) {
+    item = 'Pole height must be between 20 and 125';
+  } else if (status == 3) {
+    item = 'Please double check circumference';
+  } else {
+    var pole = poleMaterials(material);
+    var item = getItemFor(pole, height, circum);
+  }
+
+  // Output
+  outputPoleClass.textContent = item;
+};
+
+// Pole height:
+
+function toDecimal(feet, inches) {
+  var converted_inches = parseFloat((inches / 12).toFixed(2));
+  var converted = Number(feet) + converted_inches;
+  return converted;
+};
+
+function fromDecimal(decimal) {
+  var feet = Math.floor(decimal);
+  var inches = Math.round((decimal - feet) * 12);
+  var buried = feet + "' " + inches + '"';
+  return buried
+};
+
+function calulateHeight(feet, inches) {
+  var decimalFeet = toDecimal(feet, inches);
+  var perdicted = Math.round(decimalFeet + 2 + (decimalFeet + 2) * 0.1);
+  var height = Math.ceil(perdicted / 5) * 5;
+  var depth = height - decimalFeet;
+  var buried = fromDecimal(depth);
+  return {
+    height: height,
+    buried: buried,
+  }
+};
+
+var button = document.getElementById('findHeight');
+
+var inputFeet = document.getElementById('pole_feet');
+var inputInches = document.getElementById('pole_inches');
+
+var outputPoleHeight = document.getElementById('pheight');
+var outputBuriedDepth = document.getElementById('bdepth');
+
+button.onclick = function () {
+  var feet = inputFeet.value;
+  var inches = inputInches.value;
+
+  if (feet < 1) {
+    total = ' ';
+  } else {
+    var result = calulateHeight(feet, inches);
+    var height = result.height;
+    var buried = result.buried;
+  }
+
+  // Output
+  outputPoleHeight.textContent = height;
+  outputBuriedDepth.textContent = buried;
+};
+
+// Distance moved:
+
+function direction(num) {
+  console.log(num)
+
+  if (num > 0) {
+    var direction = "Raised "
+  }
+  else if (num < 0) {
+    var direction = "Lowered "
+  }
+  return direction
+};
+
+function calculateDistance(a, b) {
+  var decimal = b - a;
+  var qualitator = direction(decimal) 
+  var outDecimal = qualitator + Math.abs(decimal.toFixed(2)) + "'"
+  console.log(outDecimal)
+
+  var feet = fromDecimal(Math.abs(decimal));
+  var outFeet = qualitator + feet
+  console.log(feet)
+
+  var inches = Math.round(decimal * 12)
+  var outInches = qualitator + Math.abs(inches) +'"'
+  return {
+    outFeet: outFeet,
+    outInches: outInches,
+    outDecimal: outDecimal,
+  };
+}
+
+var button = document.getElementById('findDistance');
+
+var inputFeetA = document.getElementById('dfeetA');
+var inputInchesA = document.getElementById('dinchesA');
+var inputFeetB = document.getElementById('dfeetB');
+var inputInchesB = document.getElementById('dinchesB');
+
+var outputDistancefeet = document.getElementById('distancefeet');
+var outputDistanceinches = document.getElementById('distanceinches');
+var outputDistancedecimal = document.getElementById('distancedecimal');
+
+button.onclick = function () {
+  var dFeetA = inputFeetA.value;
+  var dInchesA = inputInchesA.value;
+  var dFeetB = inputFeetB.value;
+  var dInchesB = inputInchesB.value;
+
+  var dedcimalA = toDecimal(dFeetA, dInchesA);
+  var dedcimalB = toDecimal(dFeetB, dInchesB);
+ 
+  var result = calculateDistance(dedcimalA, dedcimalB);
+
+  var outFeet = result.outFeet;
+  var outInches = result.outInches;
+  var outDecimal = result.outDecimal;
+
+
+  // Output
+  outputDistancefeet.textContent = outFeet;
+  outputDistanceinches.textContent = outInches;
+  outputDistancedecimal.textContent = outDecimal;
+};
+
+</script>
+</body>
+</html>
